@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '2)55z!fw11k*ppvex-uj#9oksykg+vrj)b*ace&eseth3lcj9*'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -140,6 +140,22 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'build', 'media')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
 
 try:
     from .local_settings import *
