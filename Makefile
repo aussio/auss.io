@@ -1,3 +1,3 @@
 local:
-	@echo -n "\n\nNOTE: Make sure you are running within 'pipenv shell'\n\n"
+	-pipenv shell
 	heroku local -f Procfile.local
