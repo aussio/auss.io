@@ -1,0 +1,3 @@
+release: python manage.py migrate --settings=backend.settings.development
+web: gunicorn --env DJANGO_SETTINGS_MODULE=backend.settings.development backend.wsgi --log-file -
+worker: npm start
