@@ -2,15 +2,17 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from django.utils.html import mark_safe
+from django.utils.text import slugify
 
 
 class BlogPost(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50, blank=False)
     header_image_url = models.URLField()
     content = models.TextField()
     is_draft = models.BooleanField(default=True)
     created_at = models.DateTimeField(editable=False)
-    last_modified = models.DateTimeField()
+    last_modified = models.DateTimeField(editable=False)
+    slug = models.SlugField(unique=True, blank=True, editable=False)
 
     def __str__(self):
         return self.title
@@ -21,6 +23,7 @@ class BlogPost(models.Model):
 
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
+        self.slug = slugify(self.title)
         if not self.id:
             self.created_at = timezone.now()
         self.last_modified = timezone.now()
