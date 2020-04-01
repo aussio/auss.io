@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.html import mark_safe
 from django.utils.text import slugify
+from django.conf import settings
 
 from martor.models import MartorField
 
@@ -35,3 +36,6 @@ class BlogPost(models.Model):
 
     def image_tag(self):
         return mark_safe(f'<img src="{self.header_image_url}" width="150" height="150" />')
+
+    def preview_link(self):
+        return mark_safe(f'<a href="{settings.HOSTNAME}/blog/{self.slug}">{settings.HOSTNAME}/blog/{self.slug}<a/>')
