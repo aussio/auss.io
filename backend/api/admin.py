@@ -1,8 +1,15 @@
 from django.contrib import admin
+from django.db import models
+from martor.widgets import AdminMartorWidget
+
 from .models import BlogPost
 
 
 class BlogPostAdmin(admin.ModelAdmin):
+    # Make all TextFields Markdown Fields
+    formfield_overrides = {
+        models.TextField: {'widget': AdminMartorWidget},
+    }
     # ~~~~~~~~~~~~~~~~~~~ #
     #  EDIT PAGE OPTIONS  #
     # ~~~~~~~~~~~~~~~~~~~ #

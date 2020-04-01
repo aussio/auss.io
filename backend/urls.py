@@ -26,6 +26,7 @@ router.register(r'posts', views.BlogPostViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('martor/', include('martor.urls')),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', index, name='index'),

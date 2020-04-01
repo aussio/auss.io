@@ -4,11 +4,13 @@ from django.utils import timezone
 from django.utils.html import mark_safe
 from django.utils.text import slugify
 
+from martor.models import MartorField
+
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=50, blank=False)
     header_image_url = models.URLField()
-    content = models.TextField()
+    content = MartorField()
     is_draft = models.BooleanField(default=True)
     created_at = models.DateTimeField(editable=False)
     last_modified = models.DateTimeField(editable=False)
@@ -24,9 +26,11 @@ class BlogPost(models.Model):
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
         self.slug = slugify(self.title)
+
         if not self.id:
             self.created_at = timezone.now()
         self.last_modified = timezone.now()
+
         return super(BlogPost, self).save(*args, **kwargs)
 
     def image_tag(self):

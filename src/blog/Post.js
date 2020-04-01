@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { useParams } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 
 export default function BlogPost() {
   // Get the ID from the URL Parameter
@@ -63,7 +64,7 @@ export default function BlogPost() {
             {last_modified}
           </p>
           <br />
-          <p>{content}</p>
+          <ReactMarkdown source={content} />
         </div>
       </div>
     );

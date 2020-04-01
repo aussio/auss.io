@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import * as colors from '../theme/colors';
 
 export default function Blog() {
@@ -82,7 +83,12 @@ function BlogPostSnippet({ post, className }) {
           alt={title}
         />
         <h3>{title}</h3>
-        <p>{content}</p>
+        <ReactMarkdown
+          source={`${content.substring(0, 300)}...`}
+          css={{
+            padding: '0 2em',
+          }}
+        />
       </li>
     </Link>
   );
