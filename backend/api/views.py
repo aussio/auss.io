@@ -6,3 +6,4 @@ from .serializer import BlogPostSerializer
 class BlogPostViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all().order_by('-created_at')
     serializer_class = BlogPostSerializer
+    lookup_field = 'slug'

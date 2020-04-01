@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
 import { useState, useEffect } from 'react';
 /** @jsx jsx */
-import { jsx } from '@emotion/core';
+import { jsx, css } from '@emotion/core';
+import { Link } from 'react-router-dom';
 import * as colors from '../theme/colors';
 
 export default function Blog() {
@@ -46,30 +47,43 @@ function BlogPostSnippets() {
 }
 
 function BlogPostSnippet({ post, className }) {
-  const { title, header_image_url, content } = post;
-
+  const { slug, title, header_image_url, content } = post;
   const borderRadius = '20px';
 
   return (
-    <li
+    <Link
+      to={`/blog/${slug}`}
       className={className} // Allow parent to override CSS
       css={{
-        maxWidth: '800px',
-        textAlign: 'center',
-        backgroundColor: colors.veryLight,
+        textDecoration: 'none',
         borderRadius,
+        color: colors.text,
+        ':hover': {
+          filter: 'brightness(75%)',
+          boxShadow: '10px 10px 10px rgba(0,0,0,.15)',
+        },
       }}
     >
-      <img
+      <li
         css={{
-          maxWidth: '100%',
-          borderRadius: `${borderRadius} ${borderRadius} 0px 0px`,
+          maxWidth: '800px',
+          textAlign: 'center',
+          backgroundColor: colors.veryLight,
+          borderRadius,
+          paddingBottom: '2rem',
         }}
-        src={header_image_url}
-        alt={title}
-      />
-      <h3>{title}</h3>
-      <p>{content}</p>
-    </li>
+      >
+        <img
+          css={{
+            maxWidth: '100%',
+            borderRadius: `${borderRadius} ${borderRadius} 0px 0px`,
+          }}
+          src={header_image_url}
+          alt={title}
+        />
+        <h3>{title}</h3>
+        <p>{content}</p>
+      </li>
+    </Link>
   );
 }

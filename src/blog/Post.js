@@ -6,18 +6,18 @@ import { useParams } from 'react-router-dom';
 
 export default function BlogPost() {
   // Get the ID from the URL Parameter
-  const { id } = useParams();
+  const { slug } = useParams();
   const [post, setPost] = useState([]);
 
   useEffect(() => {
-    fetch(`/api/posts/${id}/`)
+    fetch(`/api/posts/${slug}/`)
       .then((response) => response.json())
       .then(
         (result) => {
           setPost(result);
         },
       );
-  }, [id]);
+  }, [slug]);
 
   if (post) {
     const { title, header_image_url, content, last_modified } = post;

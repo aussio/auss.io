@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 /** @jsx jsx */
-import { jsx, Global } from '@emotion/core'
-import Gallery from "react-photo-gallery";
+import { jsx, Global } from '@emotion/core';
+import Gallery from 'react-photo-gallery';
 
-export default function Home() {
-
+export default function LandingPage() {
   const photos = [
     {
       src: 'https://scontent-iad3-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/74357264_157527582314269_1985767718385555947_n.jpg?_nc_ht=scontent-iad3-1.cdninstagram.com&_nc_cat=101&_nc_ohc=bWP0IdRGeO4AX_e07dc&oh=95cd87cf71bac956c1941582ec61b55d&oe=5EA5D06A',
@@ -81,39 +80,44 @@ export default function Home() {
       height: 4,
       width: 3,
     },
-  ]
+  ];
 
   return (
     <div
       css={{
-        position: "relative",
+        position: 'relative',
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0',
       }}
     >
       <Global
         styles={{
-          'body': {
-            backgroundColor: "black",
+          body: {
+            backgroundColor: 'black',
           },
         }}
       />
       <p
         css={{
-          position: "absolute",
-          top: "15%",
-          left: "12.5%",
-          width: "75%",
-          height: "50%",
-          display: "flex",
-          alignItems: "center", /** Y-axis align **/
-          justifyContent: "center", /** X-axis align **/
-          fontSize: "4em",
-          background: "rgba(0,0,0,.75)",
-          color: "white",
+          position: 'absolute',
+          top: '0',
+          bottom: '0',
+          left: '0',
+          right: '0',
+          display: 'flex',
+          alignItems: 'center', /** Y-axis align * */
+          justifyContent: 'center', /** X-axis align * */
+          fontSize: '4em',
+          background: 'rgba(0,0,0,.75)',
+          color: 'white',
+          margin: 0,
         }}
       >
         Future home of my personal website. 🚀
       </p>
       <Gallery photos={photos} />
     </div>
-  )
+  );
 }
