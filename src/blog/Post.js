@@ -23,33 +23,53 @@ export default function BlogPost() {
     const { title, header_image_url, content, last_modified } = post;
 
     return (
-      <div css={{
-        color: 'white',
-      }}
+      <div
+        // Post Contents Container
+        css={{
+          display: 'flex',
+          flexDirection: 'column',
+          // justifyContent: 'center',
+          // alignContent: 'center',
+          alignItems: 'center',
+        }}
       >
-        <h1>{title}</h1>
         <img
-          css={{
-            
-          }}
           src={header_image_url}
           alt={title}
+          css={{
+            maxHeight: '40vh',
+            width: '100%',
+            objectFit: 'contain',
+          }}
         />
-        <br />
-        <em>
-          last modified at
-          {last_modified}
-        </em>
-        <br />
-        <p>{content}</p>
+        <div css={{
+          width: '70%',
+        }}
+        >
+          <h1 css={{
+            textAlign: 'center',
+          }}
+          >
+            {title}
+          </h1>
+          <p css={{
+            fontWeight: 'lighter',
+            fontStyle: 'italic',
+            textAlign: 'center',
+          }}
+          >
+            last modified at:
+            {' '}
+            {last_modified}
+          </p>
+          <br />
+          <p>{content}</p>
+        </div>
       </div>
     );
   }
   return (
-    <div css={{
-      color: 'white',
-    }}
-    >
+    <div>
       <p>Loading...</p>
     </div>
   );

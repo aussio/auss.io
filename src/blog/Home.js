@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+import * as colors from '../theme/colors';
 
 export default function Blog() {
   return (
@@ -32,44 +33,43 @@ function BlogPostSnippets() {
       }}
     >
       {posts.map((post) => (
-        <li
+        <BlogPostSnippet
           css={{
-            maxWidth: '70%',
+            margin: '2em',
           }}
           key={post.url}
-        >
-          <BlogPostSnippet post={post} />
-        </li>
+          post={post}
+        />
       ))}
     </ol>
   );
 }
 
-function BlogPostSnippet({ post }) {
-  const { title, header_image_url, content, last_modified } = post;
+function BlogPostSnippet({ post, className }) {
+  const { title, header_image_url, content } = post;
+
+  const borderRadius = '20px';
 
   return (
-    <div
+    <li
+      className={className} // Allow parent to override CSS
       css={{
+        maxWidth: '800px',
         textAlign: 'center',
+        backgroundColor: colors.veryLight,
+        borderRadius,
       }}
     >
       <img
+        css={{
+          maxWidth: '100%',
+          borderRadius: `${borderRadius} ${borderRadius} 0px 0px`,
+        }}
         src={header_image_url}
         alt={title}
       />
       <h3>{title}</h3>
-      <em
-        css={{
-          fontWeight: 'lighter',
-        }}
-      >
-        last_modified modified at
-        {' '}
-        {last_modified}
-      </em>
-      <br />
       <p>{content}</p>
-    </div>
+    </li>
   );
 }
