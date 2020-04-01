@@ -1,9 +1,6 @@
-pipenv:
-	-pipenv shell
-
-local: pipenv
+local:
 	heroku local -f Procfile.local
 
-migrate: pipenv
+migrate:
 	python manage.py makemigrations
 	python manage.py migrate

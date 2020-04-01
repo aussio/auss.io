@@ -1,20 +1,41 @@
+@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
 body {
   margin: 0;
-  font-family: 'Rubik', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Open Sans","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  line-height: 1.4;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: black;
 }
 
-@font-face {
-  font-family: 'Rubik';
-  font-display: swap;
-  src: local('Rubik'), url(https://fonts.googleapis.com/css?family=Rubik) format('woff');
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Josefin Sans","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-weight: 400;
+  margin: .5em;
+}
+
+h1 {
+  font-size: 4em;
+}
+h2 {
+  font-size: 3em;
+}
+h3 {
+  font-size: 2em;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/*
+  CSS RESETS
+*/
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
