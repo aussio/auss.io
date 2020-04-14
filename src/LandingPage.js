@@ -90,6 +90,19 @@ export default function LandingPage() {
         bottom: '0',
         left: '0',
         right: '0',
+
+        /*
+        The following oddity is a quick way of solving how react-photo-gallery
+          handles resizing the Gallery without learning how to manage the size
+          more flexibly. This page is intended to be temporary, so let's use a
+          quick and easy-to-understand fix. 👍
+        */
+        '@media(min-width: 1950px)': {
+          margin: '0 10%',
+        },
+        '@media(min-width: 2400px)': {
+          margin: '0 20%',
+        },
       }}
     >
       <Global
@@ -109,10 +122,17 @@ export default function LandingPage() {
           display: 'flex',
           alignItems: 'center', /** Y-axis align * */
           justifyContent: 'center', /** X-axis align * */
-          fontSize: '4em',
+          fontSize: '4rem',
           background: 'rgba(0,0,0,.75)',
           color: 'white',
+          textAlign: 'center',
           margin: 0,
+
+          '@media(max-width: 1000px)': {
+            alignItems: 'flex-start', /** Y-axis align * */
+            fontSize: '2.5rem',
+            paddingTop: '30vh',
+          },
         }}
       >
         Future home of my personal website. 🚀
