@@ -7,7 +7,7 @@ body {
   font-size: 18px;
   color: rgb(46, 46, 46);
   line-height: 1.5;
-  letter-spacing: .02em;
+  letter-spacing: .02rem;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,13 +20,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 4rem;
 }
 h2 {
-  font-size: 3em;
+  font-size: 3rem;
 }
 h3 {
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 code {

@@ -134,3 +134,18 @@ MARTOR_ENABLE_CONFIGS = {
     'spellcheck': 'false',  # to enable/disable spellcheck in form textareas
     'hljs': 'true',         # to enable/disable hljs highlighting in preview
 }
+
+# for the markdown.extensions, see: https://python-markdown.github.io/extensions/
+MARTOR_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra',        # Various, including footnotes and tables support
+    'markdown.extensions.nl2br',        # Cause newlines in the markdown to be <br/>
+    'markdown.extensions.smarty',       # Convert ASCII quotes and such to their HTML equivalents
+    'markdown.extensions.toc',          # Table of Contents support
+    'markdown.extensions.sane_lists',   # Make unordered and ordered lists behave the way you expect they should.
+
+    # Custom markdown extensions.
+    'martor.extensions.urlize',
+    'martor.extensions.del_ins',    # ~~strikethrough~~ and ++underscores++
+    'martor.extensions.emoji',      # to parse markdown emoji
+    'martor.extensions.mdx_video',  # to parse embed/iframe video
+]

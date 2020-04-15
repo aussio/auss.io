@@ -6,12 +6,14 @@ from django.utils.text import slugify
 from django.conf import settings
 
 from martor.models import MartorField
+from martor.utils import markdownify
 
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=50, blank=False)
     header_image_url = models.URLField()
     content = MartorField()
+    html_content = models.TextField(default="")
     is_draft = models.BooleanField(default=True)
     created_at = models.DateTimeField(editable=False)
     last_modified = models.DateTimeField(editable=False)
@@ -31,6 +33,12 @@ class BlogPost(models.Model):
         if not self.id:
             self.created_at = timezone.now()
         self.last_modified = timezone.now()
+
+        # These are in separate fields intentionally.
+        # `content` is the raw content of the post and what is used in the admin's preview.
+        # `html_content` is what is used on the frontend. This keeps the frontend and backend Markdown flavors in sync.
+        # This is great since the django-markdown-editor supports lots of markdown plugins and react-markdown does not.
+        self.html_content = markdownify(self.content)
 
         return super(BlogPost, self).save(*args, **kwargs)
 

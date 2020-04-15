@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { useState, useEffect } from 'react';
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core';
+import { jsx } from '@emotion/core';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import * as colors from '../theme/colors';

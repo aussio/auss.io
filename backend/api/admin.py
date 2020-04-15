@@ -21,7 +21,9 @@ class BlogPostAdmin(admin.ModelAdmin):
             'classes': ['wide']}),
     ]
     readonly_fields = ['created_at',
-                       'last_modified', 'preview_link', 'image_tag']
+                       'last_modified',
+                       'preview_link',
+                       'image_tag']
 
     # ~~~~~~~~~~~~~~~~~~~ #
     #  LIST VIEW OPTIONS  #
