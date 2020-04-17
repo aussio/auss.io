@@ -135,7 +135,6 @@ export default function BlogPost() {
                 listStyleType: 'none',
               },
               img: {
-                maxHeight: '30vh',
                 width: '80%',
                 // Zooms in the wider the image is.
                 objectFit: 'cover',
