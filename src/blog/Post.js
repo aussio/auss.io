@@ -144,10 +144,19 @@ export default function BlogPost() {
                 },
               },
               pre: {
-                background: colors.veryLight,
-                border: `2px solid ${colors.prettyLight}`,
+                background: colors.veryVeryLight,
+                border: `2px solid ${colors.veryLight}`,
                 borderRadius: '2px',
                 padding: '1em',
+
+                // code blocks
+                code: {
+                  color: 'black',
+                },
+              },
+              // In-line code
+              code: {
+                color: colors.dark,
               },
             }}
             dangerouslySetInnerHTML={{
