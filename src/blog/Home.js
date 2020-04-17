@@ -32,6 +32,7 @@ function BlogPostSnippets() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        listStyleType: 'none',
       }}
     >
       {posts.map((post) => (

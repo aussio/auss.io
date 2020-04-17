@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import { useParams } from 'react-router-dom';
+import * as colors from '../theme/colors';
 
 export default function BlogPost() {
   // Get the ID from the URL Parameter
@@ -142,6 +143,12 @@ export default function BlogPost() {
                 '@media(min-width: 1100px)': {
                   width: '60%',
                 },
+              },
+              pre: {
+                background: colors.veryLight,
+                border: `2px solid ${colors.prettyLight}`,
+                borderRadius: '2px',
+                padding: '1em',
               },
             }}
             dangerouslySetInnerHTML={{
