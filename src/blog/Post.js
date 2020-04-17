@@ -126,9 +126,17 @@ export default function BlogPost() {
             {last_modified}
           </p>
           <br />
-          <div dangerouslySetInnerHTML={{
-            __html: html_content,
-          }}
+          <div
+            css={{
+              // Styling for the footnotes produced in the markdown
+              "[id^='fn']": {
+                fontSize: 'small',
+                listStyleType: 'none',
+              },
+            }}
+            dangerouslySetInnerHTML={{
+              __html: html_content,
+            }}
           />
         </div>
       </div>
