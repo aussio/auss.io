@@ -12,6 +12,7 @@ from martor.utils import markdownify
 class BlogPost(models.Model):
     title = models.CharField(max_length=50, blank=False)
     header_image_url = models.URLField()
+    header_image_url_wide = models.URLField(blank=True)
     content = MartorField()
     html_content = models.TextField(default="")
     is_draft = models.BooleanField(default=True)
@@ -42,8 +43,11 @@ class BlogPost(models.Model):
 
         return super(BlogPost, self).save(*args, **kwargs)
 
-    def image_tag(self):
+    def header_image_tag(self):
         return mark_safe(f'<img src="{self.header_image_url}" width="150" height="150" />')
+
+    def header_image_tag_wide(self):
+        return mark_safe(f'<img src="{self.header_image_url_wide}" width="150" height="150" />')
 
     def preview_link(self):
         return mark_safe(f'<a href="{settings.HOSTNAME}/blog/{self.slug}">{settings.HOSTNAME}/blog/{self.slug}<a/>')

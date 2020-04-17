@@ -17,19 +17,23 @@ class BlogPostAdmin(admin.ModelAdmin):
         ('Date Information', {'fields': [
          'created_at', 'last_modified'], 'classes': ['collapse', 'wide']}),
         ('Blog Post', {'fields': [
-         'title', 'preview_link', 'header_image_url', 'image_tag', 'is_draft', 'content'],
+         'title', 'preview_link',
+         'header_image_url', 'header_image_tag',
+         'header_image_url_wide', 'header_image_tag_wide',
+         'is_draft', 'content'],
             'classes': ['wide']}),
     ]
     readonly_fields = ['created_at',
                        'last_modified',
                        'preview_link',
-                       'image_tag']
+                       'header_image_tag',
+                       'header_image_tag_wide']
 
     # ~~~~~~~~~~~~~~~~~~~ #
     #  LIST VIEW OPTIONS  #
     # ~~~~~~~~~~~~~~~~~~~ #
     # Show all of the following fields in the list view.
-    list_display = ('last_modified', 'image_tag',
+    list_display = ('last_modified', 'header_image_tag',
                     'title', 'preview_link', 'is_draft')
 
     # Add a search bar at the top of the list view that will search the following fields.

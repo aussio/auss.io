@@ -60,7 +60,7 @@ export default function BlogPost() {
   }
 
   if (post) {
-    const { title, header_image_url, html_content, last_modified, is_draft } = post;
+    const { title, header_image_url, header_image_url_wide, html_content, last_modified, is_draft } = post;
 
     return (
       <div
@@ -93,7 +93,7 @@ export default function BlogPost() {
           )
           : null}
         <img
-          src={header_image_url}
+          src={header_image_url_wide || header_image_url}
           alt={title}
           css={{
             maxHeight: '40vh',
