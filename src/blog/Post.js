@@ -97,7 +97,12 @@ export default function BlogPost() {
           css={{
             maxHeight: '40vh',
             width: '100%',
-            objectFit: 'contain',
+            // Zooms in the wider the image is.
+            objectFit: 'cover',
+            // Make the image a little less wide & zoomed on wide screens.
+            '@media(min-width: 1100px)': {
+              width: '80%',
+            },
           }}
         />
         <div css={{

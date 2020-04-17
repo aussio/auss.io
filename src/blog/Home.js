@@ -26,7 +26,7 @@ function BlogPostSnippets() {
   }, []);
 
   return (
-    <ol
+    <ul
       css={{
         width: '100%',
         display: 'flex',
@@ -43,7 +43,7 @@ function BlogPostSnippets() {
           post={post}
         />
       ))}
-    </ol>
+    </ul>
   );
 }
 
