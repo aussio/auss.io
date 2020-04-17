@@ -133,6 +133,16 @@ export default function BlogPost() {
                 fontSize: 'small',
                 listStyleType: 'none',
               },
+              img: {
+                maxHeight: '30vh',
+                width: '80%',
+                // Zooms in the wider the image is.
+                objectFit: 'cover',
+                // Make the image a little less wide & zoomed on wide screens.
+                '@media(min-width: 1100px)': {
+                  width: '60%',
+                },
+              },
             }}
             dangerouslySetInnerHTML={{
               __html: html_content,
