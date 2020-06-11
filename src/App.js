@@ -36,9 +36,16 @@ export default function App() {
           <BlogPost />
         </Route>
       </Switch>
+      <NavigationFooter />
     </Router>
   );
 }
+
+const DISABLED_CSS = {
+  color: 'lightgrey',
+  pointerEvents: 'none',
+  textDecoration: 'line-through',
+};
 
 function NavigationHeader() {
   return (
@@ -58,16 +65,44 @@ function NavigationHeader() {
     >
       <NavigationLink to="/">
         <img
-          src="https://scontent.forf1-3.fna.fbcdn.net/v/t1.0-1/p320x320/38663644_10217834112349951_310180506597588992_n.jpg?_nc_cat=109&_nc_sid=dbb9e7&_nc_ohc=rEYE65Gxb0UAX9t68SV&_nc_ht=scontent.forf1-3.fna&_nc_tp=6&oh=411ffb1db375c08fffc9c6a9e86f7b4a&oe=5EABEEBA"
-          alt="Headshot Curtis"
+          src="https://res.cloudinary.com/https-auss-io/image/upload/v1591901055/Just%20Me/Screen_Shot_2020-04-17_at_1.38.37_PM_ddnk2t.png"
+          alt="Headshot of Austin"
           css={{
             borderRadius: '100%',
             height: '70px',
             margin: 0,
+            '@media(max-width: 550px)': {
+              height: '40px',
+            },
           }}
         />
       </NavigationLink>
-      <NavigationLink to="/blog">Blog</NavigationLink>
+      <div
+        css={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <NavigationLink
+          to="/"
+          css={DISABLED_CSS}
+        >
+          Resume/CV
+        </NavigationLink>
+        <NavigationLink to="/blog">Blog</NavigationLink>
+        <NavigationLink
+          to="/"
+          css={DISABLED_CSS}
+        >
+          Travel
+        </NavigationLink>
+        <NavigationLink
+          to="/"
+          css={DISABLED_CSS}
+        >
+          Library
+        </NavigationLink>
+      </div>
     </div>
   );
 }
@@ -80,10 +115,52 @@ function NavigationLink({ to, children, className }) {
         textDecoration: 'none',
         color: text,
         lineHeight: 0,
+        marginLeft: '2rem',
+        '@media(max-width: 550px)': {
+          fontSize: '14px',
+          marginLeft: '1rem',
+        },
+        '@media(min-width: 551px) and (max-width: 650px)': {
+          fontSize: '16px',
+          marginLeft: '1rem',
+        },
       }}
       className={className}
     >
       {children}
     </Link>
+  );
+}
+
+
+function NavigationFooter() {
+  return (
+    <div css={{
+      backgroundColor: 'white',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100px',
+    }}
+    >
+      <NavigationLink
+        to="/"
+        css={DISABLED_CSS}
+      >
+        How this site is made
+      </NavigationLink>
+      <NavigationLink
+        to="/"
+        css={DISABLED_CSS}
+      >
+        LinkedIn
+      </NavigationLink>
+      <NavigationLink
+        to="/"
+        css={DISABLED_CSS}
+      >
+        GitHub
+      </NavigationLink>
+    </div>
   );
 }

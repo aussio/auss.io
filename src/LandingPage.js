@@ -77,9 +77,6 @@ export default function LandingPage() {
               fontWeight: 600,
               lineHeight: '7rem',
             },
-            // '@media(min-width: 2400px)': {
-            //   margin: '0 20%',
-            // },
           }}
         >
           <p>Hey, I&apos;m</p>
@@ -88,19 +85,65 @@ export default function LandingPage() {
       </div>
 
       <Section color="white">
+        A couple of sentences about me. Welcome to the site, it's about my work, thoughts, and feelings.
+      </Section>
+      <Section color={COLORS.normal}>
         <h1
           css={{
             margin: 0,
             padding: '.5em',
+            color: 'white',
           }}
         >
           My Work
         </h1>
+        <p
+          css={{
+            fontWeight: 400,
+            color: 'white',
+          }}
+        >
+          Coming Soon - I'll put examples of projects that I'm proud of and links to more information.
+        </p>
       </Section>
-      <Section color={COLORS.normal} />
-      <Section color={COLORS.red} />
-      <Section color={COLORS.charcoal} />
-      <Section color={COLORS.blue} />
+      <Section color={COLORS.red}>
+        <h1
+          css={{
+            margin: 0,
+            padding: '.5em',
+            color: 'white',
+          }}
+        >
+          Professional Interests
+        </h1>
+        <p
+          css={{
+            fontWeight: 400,
+            color: 'white',
+          }}
+        >
+          Coming Soon - I'll put blurbs of areas of interest that I'd most love to work on and possibly links to blog posts about them.
+        </p>
+      </Section>
+      <Section color={COLORS.charcoal}>
+        <h1
+          css={{
+            margin: 0,
+            padding: '.5em',
+            color: 'white',
+          }}
+        >
+          Hobbies
+        </h1>
+        <p
+          css={{
+            fontWeight: 400,
+            color: 'white',
+          }}
+        >
+          Coming Soon - I'll have blurbs about my main hobbies and links to related blog posts or website sections.
+        </p>
+      </Section>
     </div>
   );
 }
@@ -111,7 +154,8 @@ function Section({ color, children }) {
       css={{
         backgroundColor: color,
         textAlign: 'center',
-        height: '500px',
+        // height: '500px',
+        padding: '5rem',
       }}
     >
       {children}
