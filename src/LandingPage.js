@@ -88,15 +88,7 @@ export default function LandingPage() {
         A couple of sentences about me. Welcome to the site, it's about my work, thoughts, and feelings.
       </Section>
       <Section color={COLORS.normal}>
-        <h1
-          css={{
-            margin: 0,
-            padding: '.5em',
-            color: 'white',
-          }}
-        >
-          My Work
-        </h1>
+        <SectionHeader>My Work</SectionHeader>
         <p
           css={{
             fontWeight: 400,
@@ -107,15 +99,7 @@ export default function LandingPage() {
         </p>
       </Section>
       <Section color={COLORS.red}>
-        <h1
-          css={{
-            margin: 0,
-            padding: '.5em',
-            color: 'white',
-          }}
-        >
-          Professional Interests
-        </h1>
+        <SectionHeader>Professional Interests</SectionHeader>
         <p
           css={{
             fontWeight: 400,
@@ -126,15 +110,7 @@ export default function LandingPage() {
         </p>
       </Section>
       <Section color={COLORS.charcoal}>
-        <h1
-          css={{
-            margin: 0,
-            padding: '.5em',
-            color: 'white',
-          }}
-        >
-          Hobbies
-        </h1>
+        <SectionHeader>Hobbies</SectionHeader>
         <p
           css={{
             fontWeight: 400,
@@ -154,11 +130,28 @@ function Section({ color, children }) {
       css={{
         backgroundColor: color,
         textAlign: 'center',
-        // height: '500px',
         padding: '5rem',
       }}
     >
       {children}
     </section>
+  );
+}
+
+function SectionHeader({ children }) {
+  return (
+    <h1
+      css={{
+        margin: 0,
+        padding: '.5em',
+        color: 'white',
+        '@media(max-width: 450px)': {
+          padding: 0,
+          fontSize: '3rem',
+        },
+      }}
+    >
+      {children}
+    </h1>
   );
 }
