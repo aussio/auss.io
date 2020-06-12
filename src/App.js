@@ -12,6 +12,31 @@ import BlogPost from './blog/Post';
 import { text } from './theme/colors';
 
 
+const DISABLED_CSS = {
+  color: 'lightgrey',
+  pointerEvents: 'none',
+  textDecoration: 'line-through',
+};
+
+const NAVIGATION_CSS = {
+  textDecoration: 'none',
+  color: text,
+  lineHeight: 0,
+  marginLeft: '2rem',
+  '@media(max-width: 550px)': {
+    fontSize: '14px',
+    marginLeft: '1rem',
+  },
+  '@media(min-width: 551px) and (max-width: 650px)': {
+    fontSize: '16px',
+    marginLeft: '1rem',
+  },
+};
+
+const NAV_IMAGE_SIZE_SMALL = '40px';
+const NAV_IMAGE_SIZE_NORMAL = '70px';
+
+
 export default function App() {
   return (
     <Router>
@@ -41,12 +66,6 @@ export default function App() {
   );
 }
 
-const DISABLED_CSS = {
-  color: 'lightgrey',
-  pointerEvents: 'none',
-  textDecoration: 'line-through',
-};
-
 function NavigationHeader() {
   return (
     <div css={{
@@ -69,10 +88,10 @@ function NavigationHeader() {
           alt="Headshot of Austin"
           css={{
             borderRadius: '100%',
-            height: '70px',
+            height: NAV_IMAGE_SIZE_NORMAL,
             margin: 0,
             '@media(max-width: 550px)': {
-              height: '40px',
+              height: NAV_IMAGE_SIZE_SMALL,
             },
           }}
         />
@@ -107,32 +126,6 @@ function NavigationHeader() {
   );
 }
 
-function NavigationLink({ to, children, className }) {
-  return (
-    <Link
-      to={to}
-      css={{
-        textDecoration: 'none',
-        color: text,
-        lineHeight: 0,
-        marginLeft: '2rem',
-        '@media(max-width: 550px)': {
-          fontSize: '14px',
-          marginLeft: '1rem',
-        },
-        '@media(min-width: 551px) and (max-width: 650px)': {
-          fontSize: '16px',
-          marginLeft: '1rem',
-        },
-      }}
-      className={className}
-    >
-      {children}
-    </Link>
-  );
-}
-
-
 function NavigationFooter() {
   return (
     <div css={{
@@ -149,18 +142,56 @@ function NavigationFooter() {
       >
         How this site is made
       </NavigationLink>
-      <NavigationLink
-        to="/"
-        css={DISABLED_CSS}
+      <NavigationExternalLink
+        to="https://www.linkedin.com/in/austin-curtis-engineer/"
       >
-        LinkedIn
-      </NavigationLink>
-      <NavigationLink
-        to="/"
-        css={DISABLED_CSS}
+        <img
+          src="https://res.cloudinary.com/https-auss-io/image/upload/v1591980363/code%20snippets/LI-In-Bug_ufwbdx.png"
+          alt="Austin Curtis LinkedIn"
+          css={{
+            height: NAV_IMAGE_SIZE_SMALL,
+            margin: 0,
+          }}
+        />
+      </NavigationExternalLink>
+      <NavigationExternalLink
+        to="https://github.com/aussio/"
       >
-        GitHub
-      </NavigationLink>
+        <img
+          src="https://res.cloudinary.com/https-auss-io/image/upload/v1591979616/code%20snippets/GitHub-Mark-64px_n7j0ed.png"
+          alt="Austin Curtis GitHub"
+          css={{
+            height: NAV_IMAGE_SIZE_SMALL,
+            margin: 0,
+          }}
+        />
+      </NavigationExternalLink>
     </div>
+  );
+}
+
+function NavigationLink({ to, children, className }) {
+  return (
+    <Link
+      to={to}
+      css={NAVIGATION_CSS}
+      className={className}
+    >
+      {children}
+    </Link>
+  );
+}
+
+function NavigationExternalLink({ to, children, className }) {
+  return (
+    <a
+      href={to}
+      target="_blank" // Open target in new window
+      rel="noopener noreferrer" // Security stuff with opening in new window
+      css={NAVIGATION_CSS}
+      className={className}
+    >
+      {children}
+    </a>
   );
 }
