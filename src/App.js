@@ -9,6 +9,7 @@ import {
 import LandingPage from './LandingPage';
 import Blog from './blog/Home';
 import BlogPost from './blog/Post';
+import Resume from './Resume';
 import { text } from './theme/colors';
 
 
@@ -60,6 +61,12 @@ export default function App() {
         >
           <BlogPost />
         </Route>
+        <Route
+          path="/resume"
+          exact
+        >
+          <Resume />
+        </Route>
       </Switch>
       <NavigationFooter />
     </Router>
@@ -103,7 +110,7 @@ function NavigationHeader() {
         }}
       >
         <NavigationLink
-          to="/"
+          to="/resume"
           css={DISABLED_CSS}
         >
           Resume/CV
@@ -134,6 +141,8 @@ function NavigationFooter() {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100px',
+      boxShadow: '0 -3px 5px rgba(0,0,0,.15)',
+      width: '100%',
     }}
     >
       <NavigationLink
