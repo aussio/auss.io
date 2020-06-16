@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import * as COLORS from './theme/colors';
@@ -151,25 +152,6 @@ export default function Resume() {
 }
 
 function HeaderWithTimeElapsed({ headerSize, dateStart, dateEnd, offAndOn, children, className }) {
-  // eslint-disable-next-line no-shadow
-  function getYearsAndMonthsPassed(dateStart, dateEnd) {
-    let months = dateEnd.getMonth() - dateStart.getMonth();
-    let years = dateEnd.getFullYear() - dateStart.getFullYear();
-    // Account for partial years
-    if (months < 0) {
-      years -= 1;
-      months = 12 + months;
-    }
-    // Plurals
-    const yearLabel = years > 1 ? 'years' : 'year';
-    const monthLabel = months > 1 ? 'months' : 'month';
-    // Don't show text for 0 years or months
-    const yearText = years === 0 ? '' : `${years} ${yearLabel}`;
-    const monthText = months === 0 ? '' : `${months} ${monthLabel}`;
-
-    return `${yearText} ${monthText}`;
-  }
-
   const HeaderTag = `h${headerSize}`;
   const offAndOnText = offAndOn ? '(off and on)' : '';
 
@@ -207,4 +189,22 @@ function HeaderWithTimeElapsed({ headerSize, dateStart, dateEnd, offAndOn, child
       </div>
     </section>
   );
+}
+
+export function getYearsAndMonthsPassed(dateStart, dateEnd) {
+  let months = dateEnd.getMonth() - dateStart.getMonth();
+  let years = dateEnd.getFullYear() - dateStart.getFullYear();
+  // Account for partial years
+  if (months < 0) {
+    years -= 1;
+    months = 12 + months;
+  }
+  // Plurals
+  const yearLabel = years > 1 ? 'years' : 'year';
+  const monthLabel = months > 1 ? 'months' : 'month';
+  // Don't show text for 0 years or months
+  const yearText = years === 0 ? '' : `${years} ${yearLabel}`;
+  const monthText = months === 0 ? '' : `${months} ${monthLabel}`;
+
+  return `${yearText} ${monthText}`.trim();
 }
