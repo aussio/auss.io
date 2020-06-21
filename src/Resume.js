@@ -2,6 +2,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import * as COLORS from './theme/colors';
+import * as STYLES from './theme/styles';
+import Accordion from './Accordion';
 
 
 export default function Resume() {
@@ -49,7 +51,7 @@ export default function Resume() {
               color: COLORS.dark,
               boxShadow: '0 3px 5px rgba(0,0,0,.65)',
               padding: '1rem',
-              borderRadius: '5px',
+              borderRadius: STYLES.BUTTON_BORDER_RADIUS,
               background: 'white',
             }}
           >
@@ -97,6 +99,18 @@ export default function Resume() {
         >
           Vacation & Personal Projects
         </HeaderWithTimeElapsed>
+        <Accordion
+          header="Why did I leave?"
+          backgroundColor={COLORS.yellow}
+          borderColor={COLORS.yellow}
+        >
+          <strong>
+            I left because I wanted to do something that inspired me.
+          </strong>
+          <p>
+            By this point in my career, I had worked in Web Hosting for about 7 and a half years and WP Engine for over 5 and a half.
+          </p>
+        </Accordion>
         <HeaderWithTimeElapsed
           headerSize="3"
           dateStart={SE2_START}
