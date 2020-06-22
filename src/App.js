@@ -11,6 +11,7 @@ import Blog from './blog/Home';
 import BlogPost from './blog/Post';
 import Resume from './Resume';
 import { text } from './theme/colors';
+import { MAIN_HEADER_Z_INDEX } from './theme/styles';
 
 
 const DISABLED_CSS = {
@@ -77,7 +78,7 @@ function NavigationHeader() {
   return (
     <div css={{
       backgroundColor: 'white',
-      zIndex: 99,
+      zIndex: MAIN_HEADER_Z_INDEX,
       position: 'sticky',
       top: 0,
       left: 0,

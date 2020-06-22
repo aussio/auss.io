@@ -46,10 +46,9 @@ export default function Resume() {
             rel="noopener noreferrer" // Security stuff with opening in new window
             href="https://res.cloudinary.com/https-auss-io/image/upload/v1591987334/code%20snippets/AustinCurtisResume.pdf"
             css={{
-              position: 'relative',
               textDecoration: 'none',
-              color: 'white',
               background: COLORS.normal,
+              color: 'white',
               boxShadow: '0 3px 5px rgba(0,0,0,.65)',
               padding: '1rem',
               borderRadius: STYLES.BUTTON_BORDER_RADIUS,
@@ -100,7 +99,11 @@ export default function Resume() {
         >
           Vacation & Personal Projects
         </HeaderWithTimeElapsed>
-        <JobDescription>
+        <JobDescription
+          css={{
+            paddingBottom: '2rem',
+          }}
+        >
           <h4 css={{
             fontSize: '22px',
             margin: 0,
@@ -126,21 +129,28 @@ export default function Resume() {
             of requests per week
           </p>
         </JobDescription>
-        <Accordion
-          header="Why did I leave?"
-          backgroundColor={COLORS.yellow}
-          borderColor={COLORS.yellow}
-        >
-          <strong>
-            I left because I wanted to do something that inspired me.
-          </strong>
-          <p>
-            By this point in my career, I had worked in Web Hosting for about 7 and a half years and WP Engine for over 5 and a half.
-          </p>
-        </Accordion>
         <ResumeSection
           background={COLORS.veryVeryLight}
         >
+          <Accordion
+            header="Why did I leave?"
+            backgroundColor={COLORS.yellow}
+            borderColor={COLORS.yellow}
+            textColor={COLORS.text}
+            css={{
+              position: 'absolute',
+              zIndex: STYLES.RESUME_STICKY_ACCORDION_Z_INDEX,
+              left: '2rem',
+              top: '-2rem',
+            }}
+          >
+            <strong>
+              I left because I wanted to do something that inspired me.
+          </strong>
+            <p>
+              By this point in my career, I had worked in Web Hosting for about 7 and a half years and WP Engine for over 5 and a half.
+          </p>
+          </Accordion>
           <HeaderWithTimeElapsed
             headerSize="3"
             dateStart={SE2_START}
@@ -238,9 +248,16 @@ export default function Resume() {
         background={COLORS.veryVeryLightRed}
       >
         <Accordion
-          header="Moving from Support to Software"
+          header="Why did I leave?"
           backgroundColor={COLORS.yellow}
           borderColor={COLORS.yellow}
+          textColor={COLORS.text}
+          css={{
+            position: 'absolute',
+            zIndex: STYLES.RESUME_STICKY_ACCORDION_Z_INDEX,
+            left: '2rem',
+            top: '-2rem',
+          }}
         >
           <strong>
             I left because I wanted to do something that inspired me.
@@ -297,6 +314,7 @@ function ResumeSection({ background, children, className }) {
   return (
     <section
       css={{
+        position: 'relative',
         padding: '1rem 0',
         background,
       }}

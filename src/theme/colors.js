@@ -12,5 +12,9 @@ const BASE_RED = '209, 73, 91';
 export const red = 'rgb(209, 73, 91)';
 export const veryVeryLightRed = `rgba(${BASE_RED}, 10%)`; // Currently used for the <pre> tags in blog posts
 
-export const yellow = 'rgb(250, 223, 99)';
+const BASE_YELLOW = '255, 240, 80';
+export const yellow = `rgb(${BASE_YELLOW})`;
+
+
 export const charcoal = 'rgb(30, 57, 71)';
+export const blue = 'rgb(108, 212, 255)';

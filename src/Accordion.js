@@ -7,9 +7,12 @@ const borderRadius = STYLES.BUTTON_BORDER_RADIUS;
 
 export default function Accordion({
   header, children,
-  backgroundColor, borderColor, className, // CSS related
+  backgroundColor, borderColor, textColor, className, // CSS related
 }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const collapsedWidth = '300px';
+  const openWidth = '1000px';
 
   return (
     <div
@@ -21,8 +24,9 @@ export default function Accordion({
     >
       <div
         css={{
-          boxShadow: '0 1px 3px rgba(0,0,0,.55)',
-          maxWidth: '600px',
+          boxShadow: '0 2px 6px rgba(0,0,0,.85)',
+          transition: isOpen ? 'width 0.25s ease' : 'width 0.25s ease 0.25s',
+          width: isOpen ? openWidth : collapsedWidth,
           border: `1px solid ${borderColor}`,
           borderRadius,
         }}
@@ -31,10 +35,11 @@ export default function Accordion({
         <Header
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-          color={backgroundColor}
+          backgroundColor={backgroundColor}
+          color={textColor}
           css={{
             background: backgroundColor,
-            padding: '.5rem',
+            padding: '1rem',
             borderBottom: isOpen ? `1px solid ${borderColor}` : '',
             borderRadius: isOpen ? `${borderRadius} ${borderRadius} 0 0` : borderRadius,
             ':hover': {
@@ -44,13 +49,20 @@ export default function Accordion({
         >
           {header}
         </Header>
-        <Body isOpen={isOpen}>{children}</Body>
+        <Body
+          isOpen={isOpen}
+          css={{
+            width: openWidth,
+          }}
+        >
+          {children}
+        </Body>
       </div>
     </div>
   );
 }
 
-function Body({ isOpen, children }) {
+function Body({ isOpen, children, className }) {
   const contentRef = useRef(null);
 
   return (
@@ -58,11 +70,12 @@ function Body({ isOpen, children }) {
       ref={contentRef}
       css={{
         background: 'white',
-        transition: 'height 0.25s ease',
+        transition: isOpen ? 'height 0.25s ease .25s' : 'height 0.25s ease',
         height: isOpen ? contentRef.current.scrollHeight : 0,
         overflow: 'auto',
         borderRadius,
       }}
+      className={className}
     >
       <div // This extra div is necessary to give content a margin but have it not overflow
         css={{
@@ -75,7 +88,7 @@ function Body({ isOpen, children }) {
   );
 }
 
-function Header({ isOpen, setIsOpen, color, children, className }) {
+function Header({ isOpen, setIsOpen, color, backgroundColor, children, className }) {
   const CHEVRON_SIZE = 10;
 
   return (
@@ -85,6 +98,8 @@ function Header({ isOpen, setIsOpen, color, children, className }) {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        color,
+        fontWeight: 600,
       }}
       onClick={() => { setIsOpen(!isOpen); }}
       onKeyPress={() => { setIsOpen(!isOpen); }}
@@ -102,47 +117,46 @@ function Header({ isOpen, setIsOpen, color, children, className }) {
       </p>
       <Chevron
         size={CHEVRON_SIZE}
-        direction={isOpen ? 'up' : 'down'}
+        direction={isOpen ? 'left' : 'right'}
         color={color}
+        backgroundColor={backgroundColor}
       />
     </div>
   );
 }
 
-function Chevron({ color, size, direction }) {
+function Chevron({ color, backgroundColor, size, direction }) {
   const rotation = (() => {
     switch (direction) {
-      case 'up':
-        return 'scaleY(-1)';
-      case 'down':
+      case 'left':
+        return 'scaleX(-1)';
+      case 'right':
       default:
         return '';
     }
   })();
 
   return (
-    <icon
+    <div
       css={{
         position: 'relative',
-        height: `${size}px`,
-        width: `${size * 2}px`,
+        height: `${size * 2}px`,
+        width: `${size}px`,
         transform: rotation,
         transition: 'transform 0.5s ease',
         ':before': {
           position: 'absolute',
           content: '""',
           border: `${size}px solid transparent`,
-          top: 0,
           left: 0,
-          borderTopColor: 'black',
+          borderLeftColor: color,
         },
         ':after': {
           position: 'absolute',
           content: '""',
           border: `${size}px solid transparent`,
-          top: '-4px',
-          left: 0,
-          borderTopColor: color,
+          left: '-4px',
+          borderLeftColor: backgroundColor,
         },
       }}
     />
