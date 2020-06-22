@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-use-before-define */
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
@@ -23,8 +24,7 @@ export default function Resume() {
     >
       <header
         css={{
-          background: COLORS.normal,
-          color: 'white',
+          background: 'white',
           padding: '3rem 0',
         }}
       >
@@ -48,11 +48,14 @@ export default function Resume() {
             css={{
               position: 'relative',
               textDecoration: 'none',
-              color: COLORS.dark,
+              color: 'white',
+              background: COLORS.normal,
               boxShadow: '0 3px 5px rgba(0,0,0,.65)',
               padding: '1rem',
               borderRadius: STYLES.BUTTON_BORDER_RADIUS,
-              background: 'white',
+              ':hover': {
+                filter: 'brightness(105%)',
+              },
             }}
           >
             Simplified Printable Version
@@ -79,10 +82,8 @@ export default function Resume() {
           <h4>answers to common resume questions</h4>
         </section>
       </header>
-      <section
-        css={{
-          padding: '1rem',
-        }}
+      <ResumeSection
+        background={COLORS.veryVeryLight}
       >
         <HeaderWithTimeElapsed
           headerSize="2"
@@ -99,6 +100,32 @@ export default function Resume() {
         >
           Vacation & Personal Projects
         </HeaderWithTimeElapsed>
+        <JobDescription>
+          <h4 css={{
+            fontSize: '22px',
+            margin: 0,
+          }}
+          >
+            "Effective Notes" (React and Firebase)
+          </h4>
+          <p>
+            Assisted in the creation of the first event-driven system in the newly-forming
+            microservice architecture - a horizontally-scaling, declarative API serving millions
+            of requests per week
+          </p>
+          <h4 css={{
+            fontSize: '22px',
+            margin: 0,
+          }}
+          >
+            This Website (React and Django)
+          </h4>
+          <p>
+            Assisted in the creation of the first event-driven system in the newly-forming
+            microservice architecture - a horizontally-scaling, declarative API serving millions
+            of requests per week
+          </p>
+        </JobDescription>
         <Accordion
           header="Why did I leave?"
           backgroundColor={COLORS.yellow}
@@ -111,13 +138,94 @@ export default function Resume() {
             By this point in my career, I had worked in Web Hosting for about 7 and a half years and WP Engine for over 5 and a half.
           </p>
         </Accordion>
-        <HeaderWithTimeElapsed
-          headerSize="3"
-          dateStart={SE2_START}
-          dateEnd={UNEMPLOYED_START}
+        <ResumeSection
+          background={COLORS.veryVeryLight}
         >
-          Software Engineer II
-        </HeaderWithTimeElapsed>
+          <HeaderWithTimeElapsed
+            headerSize="3"
+            dateStart={SE2_START}
+            dateEnd={UNEMPLOYED_START}
+            subHeader={(
+              <SubHeader
+                label="Company:"
+                text="WP Engine"
+              />
+            )}
+          >
+            Software Engineer II
+          </HeaderWithTimeElapsed>
+          <JobDescription>
+            <h4 css={{
+              fontSize: '22px',
+              margin: 0,
+            }}
+            >
+              Event-driven architecture & microservies
+            </h4>
+            <p>
+              Assisted in the creation of the first event-driven system in the newly-forming
+              microservice architecture - a horizontally-scaling, declarative API serving millions
+              of requests per week
+            </p>
+            <h4 css={{
+              fontSize: '22px',
+              margin: 0,
+            }}
+            >
+              Google-style SRE
+            </h4>
+            <p>
+              Setup Google SRE-style SLO’s and SLA’s to monitor and alert on our own team’s
+              systems, while teaching and guiding other teams to do the same
+            </p>
+            <h4 css={{
+              fontSize: '22px',
+              margin: 0,
+            }}
+            >
+              Maintain monolith and factor out services
+            </h4>
+            <p>
+              Thought-leader and domain expert on the largest legacy monolithic repo, helping to
+              maintain and refactor as our organization moved towards microservices
+            </p>
+            <h4 css={{
+              fontSize: '22px',
+              margin: 0,
+            }}
+            >
+              Teaching fellow engineers
+            </h4>
+            <p>
+              Leader of an internal continuing education group for junior and mid-level software
+              engineers aimed at proactive, intentional advancement of our skills
+            </p>
+            <h4 css={{
+              fontSize: '22px',
+              margin: 0,
+            }}
+            >
+              Strong Scrum skills
+            </h4>
+            <p>
+              Firm believer in Scrum and always actively participating in project management
+            </p>
+            <h4 css={{
+              fontSize: '22px',
+              margin: 0,
+            }}
+            >
+              Testing and CI/CD
+            </h4>
+            <p>
+              Used a combination of Docker, Kubernetes, Terraform, and Jenkins to
+              comprehensively test our applications and automate continuous deployments
+            </p>
+            <p>
+              Regularly made contributions in a polyglot environment using PHP, Python, and Go
+            </p>
+          </JobDescription>
+        </ResumeSection>
         <HeaderWithTimeElapsed
           headerSize="3"
           dateStart={SE1_START}
@@ -125,13 +233,22 @@ export default function Resume() {
         >
           Software Engineer I
         </HeaderWithTimeElapsed>
-      </section>
-      <section
-        css={{
-          padding: '1rem',
-          background: COLORS.veryVeryLight,
-        }}
+      </ResumeSection>
+      <ResumeSection
+        background={COLORS.veryVeryLightRed}
       >
+        <Accordion
+          header="Moving from Support to Software"
+          backgroundColor={COLORS.yellow}
+          borderColor={COLORS.yellow}
+        >
+          <strong>
+            I left because I wanted to do something that inspired me.
+          </strong>
+          <p>
+            By this point in my career, I had worked in Web Hosting for about 7 and a half years and WP Engine for over 5 and a half.
+          </p>
+        </Accordion>
         <HeaderWithTimeElapsed
           headerSize="2"
           dateStart={HOSTGATOR_SUPPORT_START}
@@ -139,13 +256,20 @@ export default function Resume() {
         >
           Customer Support
         </HeaderWithTimeElapsed>
-        <HeaderWithTimeElapsed
-          headerSize="3"
-          dateStart={WPE_SUPPORT_START}
-          dateEnd={SE1_START}
+        <JobDescription>
+          <p>I think that Support is an excellent experience for nearly any position within a typical "Engineering" or "R&D" department. I think that Support is an excellent experience for nearly any position within a typical "Engineering" or "R&D" department. >I think that Support is an excellent experience for nearly any position within a typical "Engineering" or "R&D" department. I think that Support is an excellent experience for nearly any position within a typical "Engineering" or "R&D" department. I think that Support is an excellent experience for nearly any position within a typical "Engineering" or "R&D" department. >I think that Support is an excellent experience for nearly any position within a typical "Engineering" or "R&D" department. </p>
+        </JobDescription>
+        <ResumeSection
+          background={COLORS.veryVeryLightRed}
         >
-          Technical Support I, II, & III
+          <HeaderWithTimeElapsed
+            headerSize="3"
+            dateStart={WPE_SUPPORT_START}
+            dateEnd={SE1_START}
+          >
+            Technical Support I, II, & III
         </HeaderWithTimeElapsed>
+        </ResumeSection>
         <HeaderWithTimeElapsed
           headerSize="3"
           dateStart={HOSTGATOR_MANAGER_START}
@@ -153,24 +277,70 @@ export default function Resume() {
         >
           Support Manager
         </HeaderWithTimeElapsed>
-        <HeaderWithTimeElapsed
-          headerSize="3"
-          dateStart={HOSTGATOR_SUPPORT_START}
-          dateEnd={HOSTGATOR_MANAGER_START}
+        <ResumeSection
+          background={COLORS.veryVeryLightRed}
         >
-          Technical Support I & II
+          <HeaderWithTimeElapsed
+            headerSize="3"
+            dateStart={HOSTGATOR_SUPPORT_START}
+            dateEnd={HOSTGATOR_MANAGER_START}
+          >
+            Technical Support I & II
         </HeaderWithTimeElapsed>
-      </section>
+        </ResumeSection>
+      </ResumeSection>
     </div>
   );
 }
 
-function HeaderWithTimeElapsed({ headerSize, dateStart, dateEnd, offAndOn, children, className }) {
+function ResumeSection({ background, children, className }) {
+  return (
+    <section
+      css={{
+        padding: '1rem 0',
+        background,
+      }}
+      className={className}
+    >
+      {children}
+    </section>
+  );
+}
+
+function JobDescription({ children, className }) {
+  return (
+    <section
+      css={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <div
+        css={{
+          textAlign: 'left',
+          maxWidth: '1000px',
+        }}
+        className={className}
+      >
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function HeaderWithTimeElapsed({
+  headerSize, dateStart, dateEnd,
+  offAndOn, subHeader, children, className,
+}) {
   const HeaderTag = `h${headerSize}`;
   const offAndOnText = offAndOn ? '(off and on)' : '';
 
   return (
-    <section>
+    <section
+      css={{
+        marginBottom: '1rem',
+      }}
+    >
       <HeaderTag
         css={{
           marginBottom: 0,
@@ -180,28 +350,38 @@ function HeaderWithTimeElapsed({ headerSize, dateStart, dateEnd, offAndOn, child
       >
         {children}
       </HeaderTag>
-      <div
-        css={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          '*': {
-            height: 'fit-content',
-            color: 'lightgrey',
-            fontStyle: 'italic',
-          },
-        }}
-      >
-        <strong>Total time:</strong>
-        <p css={{
-          paddingLeft: '1rem',
-          margin: 0,
-        }}
-        >
-          {`${getYearsAndMonthsPassed(dateStart, dateEnd)} ${offAndOnText}`}
-        </p>
-      </div>
+      {subHeader}
+      <SubHeader
+        label="Total time:"
+        text={`${getYearsAndMonthsPassed(dateStart, dateEnd)} ${offAndOnText}`}
+      />
     </section>
+  );
+}
+
+function SubHeader({ label, text }) {
+  return (
+    <div
+      css={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        '*': {
+          height: 'fit-content',
+          color: 'lightgrey',
+          fontStyle: 'italic',
+        },
+      }}
+    >
+      <strong>{label}</strong>
+      <p css={{
+        paddingLeft: '1rem',
+        margin: 0,
+      }}
+      >
+        {text}
+      </p>
+    </div>
   );
 }
 
