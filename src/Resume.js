@@ -154,6 +154,19 @@ export default function Resume() {
     </h4>
   );
 
+  const ACCORDION_CSS = {
+    position: 'absolute',
+    zIndex: STYLES.RESUME_STICKY_ACCORDION_Z_INDEX,
+    left: '2rem',
+    top: '-2rem',
+    '@media(max-width: 1100px)': {
+      position: 'relative',
+      left: 'unset',
+      top: '-3rem',
+      zIndex: 'unset',
+    },
+  };
+
   return (
     <div
       css={{
@@ -332,12 +345,7 @@ export default function Resume() {
             backgroundColor={COLORS.blue}
             borderColor={COLORS.blue}
             textColor={COLORS.text}
-            css={{
-              position: 'absolute',
-              zIndex: STYLES.RESUME_STICKY_ACCORDION_Z_INDEX,
-              left: '2rem',
-              top: '-2rem',
-            }}
+            css={ACCORDION_CSS}
           >
             <strong>
               I left because I wanted to work on something that inspired me.
@@ -427,12 +435,7 @@ export default function Resume() {
           backgroundColor={COLORS.blue}
           borderColor={COLORS.blue}
           textColor={COLORS.text}
-          css={{
-            position: 'absolute',
-            zIndex: STYLES.RESUME_STICKY_ACCORDION_Z_INDEX,
-            left: '2rem',
-            top: '-3rem',
-          }}
+          css={ACCORDION_CSS}
         >
           <p>
             As I moved up to the highest level of Support, I was looking for what my next step would be. I was extremely fortunate to happen to meet an overtly positive, helpful, and kind individual who mentored me in software engineering after helping me solve a particularly tricky customer ticket that had the root cause of being a platform bug.
@@ -485,12 +488,7 @@ export default function Resume() {
             backgroundColor={COLORS.blue}
             borderColor={COLORS.blue}
             textColor={COLORS.text}
-            css={{
-              position: 'absolute',
-              zIndex: STYLES.RESUME_STICKY_ACCORDION_Z_INDEX,
-              left: '2rem',
-              top: '-3rem',
-            }}
+            css={ACCORDION_CSS}
           >
             <p>
               I actually loved being a manager. I felt that I'd grown strong bonds with my direct reports. The junior and experienced employees alike were growing in their skills and promotions. By the end of my time as manager, my team's metrics were #1 across tens of teams in Support and my top reports and I were working on an extensive continuing education series to bring up the other teams in a scalable way.
