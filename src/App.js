@@ -12,6 +12,7 @@ import BlogPost from './blog/Post';
 import Resume from './Resume';
 import { text } from './theme/colors';
 import { MAIN_HEADER_Z_INDEX } from './theme/styles';
+import ExternalLink from './lib/ExternalLink';
 
 
 const DISABLED_CSS = {
@@ -152,8 +153,9 @@ function NavigationFooter() {
       >
         How this site is made
       </NavigationLink>
-      <NavigationExternalLink
+      <ExternalLink
         to="https://www.linkedin.com/in/austin-curtis-engineer/"
+        css={NAVIGATION_CSS}
       >
         <img
           src="https://res.cloudinary.com/https-auss-io/image/upload/v1591980363/code%20snippets/LI-In-Bug_ufwbdx.png"
@@ -163,9 +165,10 @@ function NavigationFooter() {
             margin: 0,
           }}
         />
-      </NavigationExternalLink>
-      <NavigationExternalLink
+      </ExternalLink>
+      <ExternalLink
         to="https://github.com/aussio/"
+        css={NAVIGATION_CSS}
       >
         <img
           src="https://res.cloudinary.com/https-auss-io/image/upload/v1591979616/code%20snippets/GitHub-Mark-64px_n7j0ed.png"
@@ -175,7 +178,7 @@ function NavigationFooter() {
             margin: 0,
           }}
         />
-      </NavigationExternalLink>
+      </ExternalLink>
     </div>
   );
 }
@@ -189,19 +192,5 @@ function NavigationLink({ to, children, className }) {
     >
       {children}
     </Link>
-  );
-}
-
-function NavigationExternalLink({ to, children, className }) {
-  return (
-    <a
-      href={to}
-      target="_blank" // Open target in new window
-      rel="noopener noreferrer" // Security stuff with opening in new window
-      css={NAVIGATION_CSS}
-      className={className}
-    >
-      {children}
-    </a>
   );
 }

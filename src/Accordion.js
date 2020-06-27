@@ -1,21 +1,57 @@
-import { useState, useRef } from 'react';
+/* eslint-disable max-len */
+import {
+  useState, useRef, useCallback,
+} from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import * as STYLES from './theme/styles';
 
 const borderRadius = STYLES.BUTTON_BORDER_RADIUS;
 
+/*
+  An accordion that shows the `header` prop when closed and the `header` and `children` when opened.
+
+  ---
+
+  There's some fancy width shenanigans going on to make the transitions work well. It's to solve the problem
+    where when the body content narrows alongside the header when collapsed, the 'height' of the body is then significantly
+    longer as the text wraps around the narrowed width. When you then try to transition the height for the opened
+    body, the height is then too long for the text that wraps to the newly expanded width.
+
+  Since you are required to provide the start and end heights explicitly for width and height in CSS transitions,
+    this means we need to come up with a fancier way of being able to formulate what the expanded width and height
+    should be. For height that is tricky since text-wrapping determines the height we need. The easiest and clearest
+    way of solving that was to make the width always a fixed width and hide that from the user. This is why the
+    transition is done in the order it is specifically - the height first, then the width the header. The width
+    of the body is actually staying constant but is overflow hidden.
+
+  Since we are required to have a fixed width, we then can't use normal responsiveness for the width. That's where
+    the useCallback comes in to give us a CSS breakpoint effectively. 1000px is the maxWidth, then we use the full
+    width of the screen after that.
+*/
 export default function Accordion({
   header, children,
   backgroundColor, borderColor, textColor, className, // CSS related
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [width, setWidth] = useState(0);
+
+  // https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
+  // callbackRef's are guaranteed to be up to date when the component mounts, as opposed to useRef.
+  // This only gets called when the component is mounted and unmounted, which is pretty sweet.
+  const widthRef = useCallback((node) => {
+    if (node !== null) {
+      setWidth(node.getBoundingClientRect().width);
+    }
+  }, []);
 
   const collapsedWidth = '300px';
-  const openWidth = '1000px';
+  // On large screens, make the max width 1000px, else use the full width of the screen.
+  const openWidth = width < 1000 ? width : '1000px';
 
   return (
     <div
+      ref={widthRef}
       css={{
         // center the maxWidth div below in the middle of a 100%-width div
         display: 'flex',
@@ -99,22 +135,22 @@ function Header({ isOpen, setIsOpen, color, backgroundColor, children, className
         justifyContent: 'center',
         alignItems: 'center',
         color,
-        fontWeight: 600,
       }}
       onClick={() => { setIsOpen(!isOpen); }}
       onKeyPress={() => { setIsOpen(!isOpen); }}
       role="button"
       className={className}
     >
-      <p
+      <h4
         css={{
           margin: 0,
           padding: 0,
           marginRight: '1rem',
+          fontWeight: 600,
         }}
       >
         {children}
-      </p>
+      </h4>
       <Chevron
         size={CHEVRON_SIZE}
         direction={isOpen ? 'left' : 'right'}
