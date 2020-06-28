@@ -120,7 +120,7 @@ function NavigationHeader() {
     >
       <NavigationLink to="/">
         <img
-          src="https://res.cloudinary.com/https-auss-io/image/upload/v1591901055/Just%20Me/Screen_Shot_2020-04-17_at_1.38.37_PM_ddnk2t.png"
+          src="https://res.cloudinary.com/https-auss-io/image/upload/v1593378289/Just%20Me/headshot_u1dcz7.jpg"
           alt="Headshot of Austin"
           css={{
             borderRadius: '100%',
