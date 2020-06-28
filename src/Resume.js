@@ -10,13 +10,6 @@ import * as STYLES from './theme/styles';
 import Accordion from './Accordion';
 import ExternalLink from './lib/ExternalLink';
 
-/*
-  @TODO:
-  ~ For small screens ~
-    * accordions should be in middle and be less wide
-    * font potentially needs to be smaller
-*/
-
 export default function Resume() {
   const now = new Date();
   const UNEMPLOYED_START = new Date('2019-10-25');
@@ -248,7 +241,7 @@ export default function Resume() {
               Upon taking an extended break, I knew that I wanted to still be writing code. I decided to take the ample free time to learn the front-end skills that I'd often wanted to have.
             </p>
             <p>
-              While learning React and CSS, I found a need for a note-taking and learning app that worked better for actually retaining a large amount of knowledge long term. This led me to starting working on Effective Notes as a way to learn React and CSS with a real project.
+              While learning React and CSS, I found a need for a note taking and learning app that worked better for actually retaining a large amount of knowledge long term. This led me to starting working on Effective Notes as a way to learn React and CSS with a real project.
             </p>
             <p>
               As the time for a job grew near, I used those same skills to build this website to hopefully help me stand out some from the crowd.
@@ -326,7 +319,7 @@ export default function Resume() {
               }}
             >
               <li>
-                A purely React frontend using <ExternalLink to="https://reactjs.org/docs/context.html">React's Context API</ExternalLink> for shared state and <ExternalLink to="https://emotion.sh/docs/introduction">Emotion</ExternalLink> for CSS-in-JS.
+                A purely React frontend using the vanilla Fetch API for communication with the backend and <ExternalLink to="https://emotion.sh/docs/introduction">Emotion</ExternalLink> for CSS-in-JS.
               </li>
               <li>
                 A <ExternalLink to="https://www.django-rest-framework.org/">Django Rest Framework</ExternalLink> backend, which gives me a nice blog editing experience with just a couple of free plugins. I mostly chose Django because Python is my preferred language and I think <ExternalLink to="https://zapier.com/jobs/">Zapier</ExternalLink> looks like a really neat remote company to work for.
@@ -365,7 +358,8 @@ export default function Resume() {
           </Accordion>
           <SOFTWARE_ENGINEER_II />
           <JobDescription>
-            <p>After my first year, I asked to no longer be a "Quality Engineer" as I had found that I was spending my time as a typical Backend Engineer with a strong belief in testing. I believe that all engineers on a team are responsible for the quality of their work, including testing and deployment. I build features that I know work and will continue to work due to automated tests.</p>
+            <p>After my first year, I asked to no longer be a "Quality Engineer" as I had found that I was spending my time as a typical Backend Engineer with a strong belief in testing.</p>
+            <p> I believe that all engineers on a team are responsible for the quality of their work, including testing and deployment. I build features that I know work and will continue to work due to automated tests.</p>
             <H4>Event-driven architecture & microservices</H4>
             <p>
               I assisted in the creation of the first event-driven system in the newly-forming microservice architecture at WP Engine. It was our goal to lead by example in regards to API scalability, monitoring and metric visibility, automated alerting of problems, and SRE principles.
@@ -384,10 +378,10 @@ export default function Resume() {
             </p>
             <H4>Maintain monolith and factor out services</H4>
             <p>
-              Throughout my time as a software engineer I was a part of the "Platform Stewards" group - a set of subject matter experts in the platform's large monolithic codebase tasked with overseeing the maintenance and improvement of the project, as opposed to permitting continued piled technical debt and decline.
+              Throughout my time as a software engineer I was a part of the "Platform Stewards" group - a set of subject matter experts in the platform's large monolithic codebase tasked with overseeing the maintenance and improvement of the project, as opposed to permitting continued piling of technical debt and decline.
             </p>
             <p>
-              I adviced on testing strategies, making seams for code improvement (<ExternalLink to="https://www.goodreads.com/book/show/44919.Working_Effectively_with_Legacy_Code">see: Working Effectively with Legacy Code</ExternalLink>), and helped build out and evangelise a Dependency Injection Framework for making the monolith more testable.
+              I advised on testing strategies, making seams for code improvement (<ExternalLink to="https://www.goodreads.com/book/show/44919.Working_Effectively_with_Legacy_Code">see: Working Effectively with Legacy Code</ExternalLink>), and helped build out and evangelise a Dependency Injection Framework for making the monolith more testable.
             </p>
             <H4>Testing and CI/CD</H4>
             <p>
