@@ -1,15 +1,19 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+import { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
+  useLocation,
+  withRouter,
 } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import Blog from './blog/Home';
 import BlogPost from './blog/Post';
 import Resume from './Resume';
+import Demos from './demos/Demos';
 import { text } from './theme/colors';
 import { MAIN_HEADER_Z_INDEX } from './theme/styles';
 import ExternalLink from './lib/ExternalLink';
@@ -40,9 +44,26 @@ const NAV_IMAGE_SIZE_SMALL = '40px';
 const NAV_IMAGE_SIZE_NORMAL = '70px';
 
 
+/*
+  Handle navigation starting at the top of each page and not where you were scrolled to on the last page. Silly router.
+  See: https://reacttraining.com/react-router/web/guides/scroll-restoration/scroll-to-top
+*/
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+const ScrollToTopDecorator = withRouter(ScrollToTop);
+
+
 export default function App() {
   return (
     <Router>
+      <ScrollToTopDecorator />
       <NavigationHeader />
       <Switch>
         <Route
@@ -68,6 +89,12 @@ export default function App() {
           exact
         >
           <Resume />
+        </Route>
+        <Route
+          path="/demos"
+          exact
+        >
+          <Demos />
         </Route>
       </Switch>
       <NavigationFooter />
@@ -113,7 +140,6 @@ function NavigationHeader() {
       >
         <NavigationLink
           to="/resume"
-          css={DISABLED_CSS}
         >
           Resume/CV
         </NavigationLink>
@@ -152,6 +178,11 @@ function NavigationFooter() {
         css={DISABLED_CSS}
       >
         How this site is made
+      </NavigationLink>
+      <NavigationLink
+        to="/demos"
+      >
+        Random demos
       </NavigationLink>
       <ExternalLink
         to="https://www.linkedin.com/in/austin-curtis-engineer/"
