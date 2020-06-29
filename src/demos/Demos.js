@@ -3,6 +3,8 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import MoveableDemo from './DraggableElement';
+import Life from './Life';
+import * as COLORS from '../theme/colors';
 
 export default function Demos() {
   return (
@@ -13,6 +15,13 @@ export default function Demos() {
       }}
     >
       <MoveableDemo />
+      <div
+        css={{
+          background: COLORS.veryVeryLight,
+        }}
+      >
+        <Life />
+      </div>
     </div>
   );
 }
