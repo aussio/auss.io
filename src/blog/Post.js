@@ -11,7 +11,7 @@ import * as colors from '../theme/colors';
 export default function BlogPost() {
   // Get the ID from the URL Parameter
   const { slug } = useParams();
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -173,8 +173,40 @@ export default function BlogPost() {
     );
   }
   return (
+    // A silly loading animation
     <div>
-      <p>Loading...</p>
+      <h3
+        css={{
+          textAlign: 'center',
+          animation: 'pulse 1s ease-in-out 0s alternate infinite',
+          '@keyframes pulse': {
+            '0%': {
+              transform: 'scale(0.95)',
+            },
+            '100%': {
+              transform: 'scale(1.05)',
+            },
+          },
+        }}
+      >
+        Loading...
+      </h3>
+      <h3
+        css={{
+          textAlign: 'center',
+          animation: 'rollaround 3s ease-in-out 0s alternate infinite',
+          '@keyframes rollaround': {
+            '0%': {
+              transform: 'translate(-100px) rotate(-720deg)',
+            },
+            '100%': {
+              transform: 'translate(100px) rotate(720deg)',
+            },
+          },
+        }}
+      >
+        🤠
+      </h3>
     </div>
   );
 }
