@@ -60,7 +60,12 @@ export default function BlogPost() {
   }
 
   if (post) {
-    const { title, header_image_url, header_image_url_wide, html_content, last_modified, is_draft } = post;
+    const {
+      title, header_image_url, header_image_url_wide,
+      html_content, is_draft,
+    } = post;
+    const lastModifiedDate = new Date(post.last_modified);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     return (
       <div
@@ -112,6 +117,7 @@ export default function BlogPost() {
         >
           <h1 css={{
             textAlign: 'center',
+            marginBottom: 0,
           }}
           >
             {title}
@@ -120,11 +126,10 @@ export default function BlogPost() {
             fontWeight: 'lighter',
             fontStyle: 'italic',
             textAlign: 'center',
+            margin: 0,
           }}
           >
-            last modified at:
-            {' '}
-            {last_modified}
+            {`${months[lastModifiedDate.getMonth()]} ${lastModifiedDate.getFullYear()}`}
           </p>
           <br />
           <div
