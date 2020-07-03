@@ -183,6 +183,12 @@ function Section({ color, children, className }) {
         backgroundColor: color,
         textAlign: 'center',
         padding: '5rem',
+        '*': {
+          maxWidth: '1000px',
+        },
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
       }}
       className={className}
     >
