@@ -4,6 +4,7 @@
 import { jsx } from '@emotion/core';
 import MoveableDemo from './DraggableElement';
 import Life from './Life';
+import LoadingAnimation from './CSSAnimation';
 import * as COLORS from '../theme/colors';
 
 export default function Demos() {
@@ -18,10 +19,15 @@ export default function Demos() {
       <div
         css={{
           background: COLORS.veryVeryLight,
+          padding: '1rem',
         }}
       >
-        <Life />
+        <h3>
+          Silly loading animation
+        </h3>
+        <LoadingAnimation />
       </div>
+      <Life />
     </div>
   );
 }
