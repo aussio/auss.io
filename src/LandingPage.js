@@ -96,7 +96,7 @@ export default function LandingPage() {
         }}
       >
         <p>
-          Welcome to information about my work, thoughts, and feelings. I plan on this website becoming like a living journal of my experiences - more to come!
+          Welcome to information about my work, thoughts, and feelings. I plan for this website to become a living journal of my experiences - more to come!
         </p>
       </Section>
       <Section
