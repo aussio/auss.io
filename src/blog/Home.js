@@ -33,6 +33,7 @@ function BlogPostSnippets() {
         flexDirection: 'column',
         alignItems: 'center',
         listStyleType: 'none',
+        paddingLeft: 0, // Fix the default ul padding of list items
       }}
     >
       {posts.map((post) => (
