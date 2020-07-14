@@ -12,7 +12,7 @@ import ExternalLink from './lib/ExternalLink';
 
 export default function Resume() {
   const now = new Date();
-  const UNEMPLOYED_START = new Date('2019-10-25');
+  const UNEMPLOYED_START = new Date('2019-12-02');
   const SE2_START = new Date('2017-01-20');
   const SE1_START = new Date('2016-01-20');
   const WPE_SUPPORT_START = new Date('2014-01-20');
