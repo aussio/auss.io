@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/accessible-emoji */
@@ -149,11 +150,11 @@ export default function LandingPage() {
           <ExternalLink to="https://www.openphilanthropy.org/">Open Philanthropy</ExternalLink>
           {' '} and {' '}
           <ExternalLink to="https://80000hours.org/key-ideas/">80,000 Hours</ExternalLink>
-          {' '} and I would really like the opportunity to spend my 2000 hours per year at work both making money and making an impact. Topics like Education, Factory Farming, and Internet Privacy really interest me.
+          {' '} and I would really like the opportunity to spend my 2000 hours per year at work both making money and making an impact. Topics like Education, Factory Farming, and Internet Privacy really interest me. <a href="https://auss.io/blog/how-to-make-the-world-a-better-place">See this blog post</a> for more of my thoughts on this.
         </p>
         <strong>Micro</strong>
         <p>
-          Throughout my career, one of the most rewarding areas for me has been mentoring and continuing education. I&apos;ve personally mentored 4 people into getting their first jobs in Tech through Technical Support, 3 people into getting their first Software Engineering jobs, and dozens of others in first learning to code. So far no project launch or code deploy has been so fulfilling. I absolutely love inspiring others to achieve their dreams and break out of whatever cognitive boxes they may been stuck within.
+          Throughout my career, one of the most rewarding areas for me has been mentoring and continuing education. I&apos;ve personally mentored 4 people into getting their first jobs in Tech through Technical Support, 3 people into getting their first Software Engineering jobs, and dozens of others in first learning to code. So far no project launch or code deploy has been so fulfilling. I absolutely love inspiring others to achieve their dreams and break out of whatever cognitive boxes they may be stuck within.
         </p>
       </Section>
       <Section
