@@ -38,3 +38,8 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
+  example-deploy:
+    needs: [test-backend, test-frontend]
+    steps:
+      - run: echo The frontend and backend tests succeeded!
