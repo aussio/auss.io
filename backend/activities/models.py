@@ -10,7 +10,7 @@ from martor.utils import markdownify
 
 class Activity(models.Model):
     title = models.CharField(max_length=50, blank=False)
-    image_url = models.URLField()
+    image_url = models.URLField(blank=True)
     description = MartorField()
     html_description = models.TextField(default="")
     created_at = models.DateTimeField(editable=False)
