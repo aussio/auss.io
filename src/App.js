@@ -14,6 +14,7 @@ import Blog from './blog/Home';
 import BlogPost from './blog/Post';
 import Resume from './Resume';
 import Demos from './demos/Demos';
+import ActivitiesPage from './activities/Activities';
 import { text } from './theme/colors';
 import { MAIN_HEADER_Z_INDEX } from './theme/styles';
 import ExternalLink from './lib/ExternalLink';
@@ -72,29 +73,40 @@ export default function App() {
         >
           <LandingPage />
         </Route>
+
         <Route
           path="/blog"
           exact
         >
           <Blog />
         </Route>
+
         <Route
           path="/blog/:slug"
           exact
         >
           <BlogPost />
         </Route>
+
         <Route
           path="/resume"
           exact
         >
           <Resume />
         </Route>
+
         <Route
           path="/demos"
           exact
         >
           <Demos />
+        </Route>
+
+        <Route
+          path="/activities"
+          exact
+        >
+          <ActivitiesPage />
         </Route>
       </Switch>
       <NavigationFooter />
