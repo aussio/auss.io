@@ -3,11 +3,17 @@ import { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import * as colors from '../theme/colors';
+import parseISOString from '../lib/datetime';
+import { act } from 'react-dom/test-utils';
 
 export default function ActivitiesPage() {
   return (
     <div>
-      <h2>Activity Log</h2>
+      <h2
+        css={{
+          textAlign: 'center',
+        }}
+      >Activity Log</h2>
       <Activities />
     </div>
   );
@@ -20,28 +26,68 @@ function Activities() {
     fetch('/api/activities/')
       .then((response) => response.json())
       .then((result) => {
-        setActivities(result.results);
+        const activitiesByDate = getActivitiesByDate(result.results)
+        setActivities(activitiesByDate);
       });
   }, []);
+
+  function getActivitiesByDate(activitiesJSON) {
+    let activitiesByDate = {};
+    activitiesJSON.forEach(activity => {
+      const date = parseISOString(activity.created_at);
+      if (activitiesByDate[date.toLocaleDateString()]) {
+        activitiesByDate[date.toLocaleDateString()].push(activity)
+      } else {
+        activitiesByDate[date.toLocaleDateString()] = [activity];
+      }
+    });
+    return activitiesByDate;
+  }
 
   return (
     <ul
       css={{
         listStyleType: 'none',
-        display: 'flex',
       }}
     >
-      {activities.map((activity) => (
-        <Activity
-          css={{
-            margin: '2rem',
-          }}
-          key={activity.url}
-          activity={activity}
-        />
+      {Object.entries(activities).map(([date, activityArray]) => (
+        <ActivityDate date={date} activities={activityArray} />
       ))}
     </ul>
   );
+}
+
+function ActivityDate({ date, activities }) {
+  return (
+    <li>
+      <h3
+        css={{
+          textAlign: 'center',
+        }}
+      >
+        {date}
+      </h3>
+      <ul
+        css={{
+          listStyleType: 'none',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        {
+          activities.map((activity) => (
+            <Activity
+              css={{
+                margin: '2rem',
+              }}
+              key={activity.url}
+              activity={activity}
+            />
+          ))
+        }
+      </ul>
+    </li>
+  )
 }
 
 function Activity({ activity, className }) {
