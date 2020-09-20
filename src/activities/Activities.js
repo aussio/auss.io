@@ -14,6 +14,7 @@ export default function ActivitiesPage() {
           textAlign: 'center',
         }}
       >Activity Log</h2>
+      <input type="file" accept="image/*" />
       <Activities />
     </div>
   );
