@@ -12,6 +12,7 @@ import {
 import LandingPage from './LandingPage';
 import Blog from './blog/Home';
 import BlogPost from './blog/Post';
+import Tweet from './tweets/Tweet';
 import Resume from './Resume';
 import Demos from './demos/Demos';
 import { text } from './theme/colors';
@@ -83,6 +84,12 @@ export default function App() {
           exact
         >
           <BlogPost />
+        </Route>
+        <Route
+          path="/tweet/:slug"
+          exact
+        >
+          <Tweet />
         </Route>
         <Route
           path="/resume"

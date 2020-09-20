@@ -43,4 +43,4 @@ class Tweet(models.Model):
         return mark_safe(f'<img src="{self.image_url}" width="150" height="150" />')
 
     def preview_link(self):
-        return mark_safe(f'<a href="{settings.HOSTNAME}/tweets/{self.slug}">{settings.HOSTNAME}/tweets/{self.slug}<a/>')
+        return mark_safe(f'<a href="{settings.HOSTNAME}/tweet/{self.slug}">{settings.HOSTNAME}/tweet/{self.slug}<a/>')
